@@ -1,9 +1,13 @@
 import { StrictMode } from "react";
 import "./index.css";
+import "@mantine/core/styles.css";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import { MantineProvider } from "@mantine/core";
-import "@mantine/core/styles.css";
+import {
+  ColorSchemeScript,
+  MantineProvider,
+  mantineHtmlProps,
+} from "@mantine/core";
 import MainPage from "./pages/MainPage";
 import BookPage from "./pages/BookPage";
 import AddBookPage from "./pages/AddBookPage";
