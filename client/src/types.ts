@@ -16,6 +16,5 @@ export type Goal = {
   book: Book;
   fromPage: number;
   toPage: number;
-  currentPage: number;
   done: boolean;
 };

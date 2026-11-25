@@ -23,7 +23,7 @@ export default function TodaysGoals({ goals, onToggle }: Props) {
     0,
   );
   const readPages = goals.reduce(
-    (sum, goal) => sum + (goal.currentPage - goal.fromPage + 1),
+    (sum, goal) => sum + (goal.book.currentPage - goal.fromPage + 1),
     0,
   );
   const head = (

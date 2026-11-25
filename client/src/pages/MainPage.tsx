@@ -53,7 +53,6 @@ export const mockGoals: Goal[] = [
     book: mockBooks[1],
     fromPage: 100,
     toPage: 200,
-    currentPage: 155,
     done: false,
   },
 ];
