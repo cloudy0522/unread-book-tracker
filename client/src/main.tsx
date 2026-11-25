@@ -1,10 +1,23 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from "react";
+import "./index.css";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
+import MainPage from "./pages/MainPage";
+import BookPage from "./pages/BookPage";
+import AddBookPage from "./pages/AddBookPage";
 
-createRoot(document.getElementById('root')!).render(
+const router = createBrowserRouter([
+  { path: "/", element: <MainPage /> },
+  { path: "/books/:id", element: <BookPage /> },
+  { path: "/books/new", element: <AddBookPage /> },
+]);
+
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <MantineProvider>
+      <RouterProvider router={router} />
+    </MantineProvider>
   </StrictMode>,
-)
+);
