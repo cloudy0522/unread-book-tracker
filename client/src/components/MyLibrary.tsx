@@ -1,5 +1,6 @@
 import {
-    Button,
+  AspectRatio,
+  Button,
   Card,
   Group,
   Image,
@@ -46,8 +47,7 @@ export default function MyLibrary({ books }: { books: Book[] }) {
               { label: "완독한 책", value: "finished" },
             ]}
           />
-          <Button color="orange" component={Link}
-                  to={`/books/new`}>
+          <Button component={Link} to={`/books/new`}>
             + 책 등록하기
           </Button>
         </Group>
@@ -77,17 +77,19 @@ export default function MyLibrary({ books }: { books: Book[] }) {
                   withBorder
                 >
                   <Card.Section>
-                    {book.coverUrl ? (
-                      <Image
-                        h={480}
-                        fit="cover"
-                        src={book.coverUrl}
-                        alt={`${book.title} cover`}
-                        fallbackSrc={defaultImage}
-                      />
-                    ) : (
-                      <Image src={defaultImage} />
-                    )}
+                    <AspectRatio ratio={5 / 4}>
+                      {book.coverUrl ? (
+                        <Image
+                          h={480}
+                          fit="cover"
+                          src={book.coverUrl}
+                          alt={`${book.title} cover`}
+                          fallbackSrc={defaultImage}
+                        />
+                      ) : (
+                        <Image src={defaultImage} />
+                      )}
+                    </AspectRatio>
                   </Card.Section>
                   <Stack gap="8" mt="xs">
                     <div>

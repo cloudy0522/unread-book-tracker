@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import {
   ColorSchemeScript,
   MantineProvider,
+  createTheme,
   mantineHtmlProps,
 } from "@mantine/core";
 import MainPage from "./pages/MainPage";
@@ -17,9 +18,16 @@ const router = createBrowserRouter([
   { path: "/books/new", element: <AddBookPage /> },
 ]);
 
+const myTheme = createTheme({
+  white: "#FCFCFC",
+  black: "#0C0C0C",
+  primaryColor: 'orange',
+  defaultRadius: 0,
+});
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <MantineProvider>
+    <MantineProvider defaultColorScheme="auto" theme={myTheme}>
       <RouterProvider router={router} />
     </MantineProvider>
   </StrictMode>,
