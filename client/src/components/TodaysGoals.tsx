@@ -27,12 +27,12 @@ export default function TodaysGoals({ goals, onToggle }: Props) {
     0,
   );
   const head = (
-    <Stack px="xl">
-      <Group justify="space-between">
+    <Stack>
+      <Group justify="space-between" px="sm">
         <Title order={2} size="h3">
           오늘의 독서 목표
         </Title>
-        {goals.length > 0 && <Text>총 {totalPages} 쪽 읽기</Text>}
+        {goals.length > 0 && <Text size="lg">총 {totalPages} 쪽 읽기</Text>}
       </Group>
       {goals.length > 0 && (
         <Progress.Root size="50">
@@ -46,7 +46,7 @@ export default function TodaysGoals({ goals, onToggle }: Props) {
     </Stack>
   );
   return (
-    <Stack component="section" gap="md">
+    <Stack component="section" gap="md" px="xl">
       {head}
       {goals.length === 0 ? (
         <Card withBorder padding="lg">
@@ -66,11 +66,13 @@ export default function TodaysGoals({ goals, onToggle }: Props) {
                     underline="never"
                     c="inherit"
                   >
-                    <Group>
+                    <Group wrap="nowrap">
                       <Text fw={700} size="lg" truncate="end">
                         {goal.book.title}
                       </Text>
-                      <Text size="sm">/ {goal.book.author}</Text>
+                      <Text size="sm" truncate="end" style={{ flexShrink: 0, maxWidth: "40%" }}>
+                        / {goal.book.author}
+                      </Text>
                     </Group>
                   </Anchor>
                   <Text ta="left">
@@ -81,6 +83,7 @@ export default function TodaysGoals({ goals, onToggle }: Props) {
                   color={goal.done ? "gray" : "cyan"}
                   onClick={() => onToggle(goal.id)}
                   aria-pressed={goal.done}
+                  flex="none"
                 >
                   {goal.done ? "완료됨 " : "완료"}
                 </Button>

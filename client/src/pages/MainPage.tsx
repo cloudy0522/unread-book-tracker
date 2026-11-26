@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Container, Stack, Title } from "@mantine/core";
 import TodaysGoals from "../components/TodaysGoals";
 import type { Book, Goal } from "../types";
+import MyLibrary from "../components/MyLibrary";
 
 // 백엔드(Express) API가 준비되면 이 파일 대신 fetch로 교체합니다.
 export const mockBooks: Book[] = [
   {
     isbn: "1",
-    title: "aaaa",
-    author: "aaaa",
+    title: "aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    author: "aaaaaaaaaaaaaaaaaaaa",
     totalPages: 584,
     currentPage: 120,
     coverUrl: "",
@@ -17,8 +18,8 @@ export const mockBooks: Book[] = [
   },
   {
     isbn: "2",
-    title: "bbbb",
-    author: "bbbb",
+    title: "bbbbbbbbbbbbbbbbbbbbㄱㄱㄱㄱㄱㄱㄱ",
+    author: "bbbbㅎㅎㅎㅎㅎㅎㅎ",
     totalPages: 248,
     currentPage: 140,
     coverUrl: "",
@@ -44,6 +45,7 @@ export const mockBooks: Book[] = [
     coverUrl: "",
     readingStatus: "",
     acquiredDate: undefined,
+    rate: 10
   },
 ];
 
@@ -60,8 +62,8 @@ export const mockGoals: Goal[] = [
 export default function MainPage() {
   return (
     <>
-      <Stack gap={40}>
-        <Title order={1} size="h3">
+      <Stack gap={40} align="center">
+        <Title order={1} size="h3" py={"xl"}>
           책을 읽읍시다
         </Title>
         <Container w="100%" px="xl">
@@ -71,6 +73,7 @@ export default function MainPage() {
               throw new Error("Function not implemented.");
             }}
           />
+          <MyLibrary books={mockBooks}/>
         </Container>
       </Stack>
     </>
