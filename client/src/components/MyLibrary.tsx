@@ -1,14 +1,11 @@
 import {
-  AspectRatio,
-  Badge,
+    Button,
   Card,
-  Center,
   Group,
   Image,
   NativeSelect,
   Progress,
   Rating,
-  SegmentedControl,
   SimpleGrid,
   Stack,
   Text,
@@ -37,17 +34,23 @@ export default function MyLibrary({ books }: { books: Book[] }) {
     <Stack p={"xl"}>
       <Group justify="space-between" px={"sm"}>
         <Title order={3}>내 서재</Title>
-        <NativeSelect
-          value={filter}
-          onChange={(event) => setFilter(event.currentTarget.value)}
-          data={[
-            { label: "전체", value: "all" },
-            { label: "읽는 중", value: "reading" },
-            { label: "쌓아둔 책", value: "unread" },
-            { label: "포기한 책", value: "abandoned" },
-            { label: "완독한 책", value: "finished" },
-          ]}
-        />
+        <Group gap={"sm"}>
+          <NativeSelect
+            value={filter}
+            onChange={(event) => setFilter(event.currentTarget.value)}
+            data={[
+              { label: "전체", value: "all" },
+              { label: "읽는 중", value: "reading" },
+              { label: "쌓아둔 책", value: "unread" },
+              { label: "포기한 책", value: "abandoned" },
+              { label: "완독한 책", value: "finished" },
+            ]}
+          />
+          <Button color="orange" component={Link}
+                  to={`/books/new`}>
+            + 책 등록하기
+          </Button>
+        </Group>
       </Group>
       <div style={{ justifyContent: "center", alignContent: "center" }}>
         {books.length === 0 ? (
