@@ -61,7 +61,7 @@ export default function TodaysGoals() {
               <Group justify="space-between" wrap="nowrap">
                 <div style={{ minWidth: 0, justifyContent: "flex-start" }}>
                   <Anchor
-                    href={`/books/${goal.book.isbn}`}
+                    href={`/books/${goal.book.id}`}
                     w="100%"
                     underline="never"
                     c="inherit"

@@ -71,9 +71,9 @@ export default function MyLibrary({ books }: { books: Book[] }) {
             {filteredBooks.map((book) => {
               return (
                 <Card
-                  key={book.isbn}
+                  key={book.id}
                   component={Link}
-                  to={`/books/${book.isbn}`}
+                  to={`/books/${book.id}`}
                   padding="lg"
                   withBorder
                 >

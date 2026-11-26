@@ -7,7 +7,7 @@ import MyLibrary from "../components/MyLibrary";
 // 백엔드(Express) API가 준비되면 이 파일 대신 fetch로 교체합니다.
 export const mockBooks: Book[] = [
   {
-    isbn: "1",
+    id: "1",
     title: "aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
     author: "aaaaaaaaaaaaaaaaaaaa",
     totalPages: 584,
@@ -17,7 +17,7 @@ export const mockBooks: Book[] = [
     acquiredDate: undefined,
   },
   {
-    isbn: "2",
+    id: "2",
     title: "bbbbbbbbbbbbbbbbbbbbㄱㄱㄱㄱㄱㄱㄱ",
     author: "bbbbㅎㅎㅎㅎㅎㅎㅎ",
     totalPages: 248,
@@ -27,7 +27,7 @@ export const mockBooks: Book[] = [
     acquiredDate: undefined,
   },
   {
-    isbn: "3",
+    id: "3",
     title: "cccc",
     author: "cccc",
     totalPages: 632,
@@ -37,7 +37,7 @@ export const mockBooks: Book[] = [
     acquiredDate: undefined,
   },
   {
-    isbn: "4",
+    id: "4",
     title: "dddd",
     author: "dddd",
     totalPages: 720,

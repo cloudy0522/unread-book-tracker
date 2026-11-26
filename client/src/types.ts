@@ -1,7 +1,7 @@
 export type Book = {
   title: string;
   author: string;
-  isbn: string;
+  id: string;
   coverUrl?: string;
   totalPages: number;
   currentPage: number;
