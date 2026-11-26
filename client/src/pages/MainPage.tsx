@@ -20,7 +20,7 @@ export const mockBooks: Book[] = [
     title: "bbbb",
     author: "bbbb",
     totalPages: 248,
-    currentPage: 70,
+    currentPage: 140,
     coverUrl: "",
     readingStatus: "",
     acquiredDate: undefined,
