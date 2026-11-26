@@ -45,7 +45,7 @@ export const mockBooks: Book[] = [
     coverUrl: "",
     readingStatus: "",
     acquiredDate: undefined,
-    rate: 10
+    rate: 10,
   },
 ];
 
@@ -67,13 +67,8 @@ export default function MainPage() {
           책을 읽읍시다
         </Title>
         <Container w="100%" px="xl">
-          <TodaysGoals
-            goals={mockGoals}
-            onToggle={function (goalId: string): void {
-              throw new Error("Function not implemented.");
-            }}
-          />
-          <MyLibrary books={mockBooks}/>
+          <TodaysGoals />
+          <MyLibrary books={mockBooks} />
         </Container>
       </Stack>
     </>

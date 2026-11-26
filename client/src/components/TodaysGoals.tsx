@@ -9,14 +9,14 @@ import {
   Anchor,
 } from "@mantine/core";
 import type { Book, Goal } from "../types";
+import { mockGoals } from "../pages/MainPage";
 
-type Props = {
-  goals: Goal[];
-  onToggle: (goalId: string) => void;
-};
-
-export default function TodaysGoals({ goals, onToggle }: Props) {
+export default function TodaysGoals() {
   // todo: 숫자가 이상할 경우(책 전체 쪽수보다 많다던가... ) 처리
+  const goals = mockGoals; //서버에서 가져오기
+  const onToggle = (goal: Goal) => {
+    //목표 완료 버튼을 눌렀을 때 서버에 반영
+  };
   const doneCount = goals.filter((g) => g.done).length;
   const totalPages = goals.reduce(
     (sum, goal) => sum + (goal.toPage - goal.fromPage + 1),
@@ -70,7 +70,11 @@ export default function TodaysGoals({ goals, onToggle }: Props) {
                       <Text fw={700} size="lg" truncate="end">
                         {goal.book.title}
                       </Text>
-                      <Text size="sm" truncate="end" style={{ flexShrink: 0, maxWidth: "40%" }}>
+                      <Text
+                        size="sm"
+                        truncate="end"
+                        style={{ flexShrink: 0, maxWidth: "40%" }}
+                      >
                         / {goal.book.author}
                       </Text>
                     </Group>
@@ -81,7 +85,7 @@ export default function TodaysGoals({ goals, onToggle }: Props) {
                 </div>
                 <Button
                   color={goal.done ? "gray" : "cyan"}
-                  onClick={() => onToggle(goal.id)}
+                  onClick={() => onToggle(goal)}
                   aria-pressed={goal.done}
                   flex="none"
                 >

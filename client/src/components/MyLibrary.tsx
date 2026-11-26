@@ -27,7 +27,8 @@ const readingStatusFilter = (book: Book, filter: string) => {
 };
 
 export default function MyLibrary({ books }: { books: Book[] }) {
-  const [filter, setFilter] = useState<string>("all");
+  const [filter, setFilter] = useState<string>("all"); //필터링
+  const [sortKey, setSortKey] = useState<string>("dueDate"); //정렬
   const filteredBooks = books.filter((book) =>
     readingStatusFilter(book, filter),
   );
@@ -41,10 +42,10 @@ export default function MyLibrary({ books }: { books: Book[] }) {
             onChange={(event) => setFilter(event.currentTarget.value)}
             data={[
               { label: "전체", value: "all" },
-              { label: "읽는 중", value: "reading" },
+              { label: "읽고 있는 책", value: "reading" },
               { label: "쌓아둔 책", value: "unread" },
               { label: "포기한 책", value: "abandoned" },
-              { label: "완독한 책", value: "finished" },
+              { label: "다 읽은 책", value: "finished" },
             ]}
           />
           <Button component={Link} to={`/books/new`}>
