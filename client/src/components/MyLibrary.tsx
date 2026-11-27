@@ -69,6 +69,7 @@ export default function MyLibrary({ books }: { books: Book[] }) {
             verticalSpacing={{ base: "md", sm: "xl" }}
           >
             {filteredBooks.map((book) => {
+              console.log()
               return (
                 <Card
                   key={book.id}
@@ -101,6 +102,9 @@ export default function MyLibrary({ books }: { books: Book[] }) {
                         {book.author}
                       </Text>
                     </div>
+                    <Text c="dimmed">
+                      {book.dueDate? `기한 ${book.dueDate.toLocaleDateString("sv-SE")}` : "\u00A0"}
+                    </Text>
                     <Progress
                       size="lg"
                       color="cyan"

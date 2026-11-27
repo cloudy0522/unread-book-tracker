@@ -14,7 +14,7 @@ export const mockBooks: Book[] = [
     currentPage: 120,
     coverUrl: "",
     readingStatus: "",
-    acquiredDate: undefined,
+    dueDate: new Date("2026-12-31"),
   },
   {
     id: "2",
