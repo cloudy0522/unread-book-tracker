@@ -8,45 +8,61 @@ generator client {
   output   = "../generated/prisma"
 }
 
+
 datasource db {
   provider = "postgresql"
 }
 
+
 model User {
   id              String    @id @default(uuid())
-  dailyCapacity   Int       
-  createdAt       DateTime  @db.Date @default(now())
+  dailyCapacity   Int                                   // 일일 책 읽기 용량
+  createdAt       DateTime  @db.Date @default(now())    // 유저 생성 날짜
 
-  books Book[]
+  userBooks UserBook[]
 }
+
 
 model Book {
   id              String    @id @default(uuid())
-  userId          String                                // 등록한 사람
-  user User @relation(fields: [userId], references: [id])
 
   title           String                                // 책 제목
   author          String                                // 저자
   totalPage       Int                                   // 총 쪽수
-  nowPage         Int       @default(0)                 // 현재 쪽수
+  createdAt       DateTime  @db.Date @default(now())    // 추가한 날짜
 
+  userBooks UserBook[]
+  @@unique([title, author])
+}
+
+
+model UserBook {
+  id              String    @id @default(uuid())
+  userId          String                                // 등록한 사람 id (User 참조)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bookId          String                                // 책 id (Book 참조)
+  book Book @relation(fields: [bookId], references: [id])
+
+  nowPage         Int       @default(0)                 // 현재 쪽수
   createdAt       DateTime  @db.Date @default(now())    // 추가한 날짜
   dueDate         DateTime? @db.Date                    // 언제까지 읽을지 날짜
-  lastReadAt      DateTime?                             // 마지막 읽은 "시각"
+  lastReadAt      DateTime?                             // 마지막 읽은 날짜와 "시각"
   isAbandoned     Boolean   @default(false)             // 읽기 포기 여부
 
   dailyGoals DailyGoal[]
+  @@unique([userId, bookId])
 }
 
+
 model DailyGoal {
-  id              String    @id @default(uuid())        
-  bookId          String                                // 책 id
-  book Book @relation(fields: [bookId], references: [id])
+  id              String    @id @default(uuid())
+  userBookId      String                                // 유저 책 id (UserBook 참조)
+  userBook UserBook @relation(fields: [userBookId], references: [id], onDelete: Cascade)
 
   goalDate        DateTime  @db.Date                    // 목표 날짜
   fromPage        Int                                   // 시작 쪽수
   toPage          Int                                   // 목표
   isDone          Boolean   @default(false)             // 목표 완료 여부
 
-  @@unique([bookId, goalDate])
+  @@unique([userBookId, goalDate])
 }
